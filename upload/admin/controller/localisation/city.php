@@ -183,7 +183,7 @@ class ControllerLocalisationCity extends Controller {
 
 			$this->data['cities'][] = array(
 				'city_id'	=> $result['city_id'],
-				'name'		=> $result['city_name'],
+				'name'		=> $result['name'],
 				'zone'		=> $result['zone'],
 				'status'	=> ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),
 				'selected'	=> isset($this->request->post['selected']) && in_array($result['city_id'], $this->request->post['selected']),
