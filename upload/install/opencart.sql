@@ -613,19 +613,19 @@ INSERT INTO `oc_category_to_store` (`category_id`, `store_id`) VALUES
 --
 
 DROP TABLE IF EXISTS `oc_city`;
-CREATE TABLE IF NOT EXISTS `oc_city` (
+CREATE TABLE `oc_city` (
   `city_id` int(11) NOT NULL AUTO_INCREMENT,
   `zone_id` int(11) NOT NULL,
   `name` varchar(128) NOT NULL,
   `status` int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`city_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `oc_city`
 --
 
-INSERT INTO `oc_city` (`city_id`, `name`, `status`) VALUES
+INSERT INTO `oc_city` (`city_id`, `zone_id`, `name`, `status`) VALUES
 (1, 1507, 'Kab. Aceh Barat', 1),
 (2, 1507, 'Kab. Aceh Barat Daya', 1),
 (3, 1507, 'Kab. Aceh Besar', 1),
@@ -1044,7 +1044,7 @@ INSERT INTO `oc_city` (`city_id`, `name`, `status`) VALUES
 (416, 1534, 'Kab. Majene', 1),
 (417, 1534, 'Kab. Mamuju Utara', 1),
 (418, 1534, 'Kab. Mamasa', 1),
-(419, 1534, 'Kab. Polewali Mamasa', 1)
+(419, 1534, 'Kab. Polewali Mamasa', 1),
 (420, 1534, 'Bukit Tinggi', 1),
 (421, 1534, 'Padang', 1),
 (422, 1534, 'Padang Panjang', 1),
