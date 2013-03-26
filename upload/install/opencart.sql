@@ -616,7 +616,7 @@ DROP TABLE IF EXISTS `oc_city`;
 CREATE TABLE IF NOT EXISTS `oc_city` (
   `city_id` int(11) NOT NULL AUTO_INCREMENT,
   `zone_id` int(11) NOT NULL,
-  `city_name` varchar(128) NOT NULL,
+  `name` varchar(128) NOT NULL,
   `status` int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`city_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ;
