@@ -1,0 +1,206 @@
+<modification>
+	<id>Select City</id>
+	<version>1.0.0</version>
+	<vqmver>2.3.2</vqmver>
+	<author>http://www.opencart-id.com/</author>
+
+	<file name="admin/controller/common/header.php">
+		<operation info="Insert City menu in admin">
+			<search position="after"><![CDATA[
+			$this->data['zone'] = $this->url->link('localisation/zone', 'token=' . $this->session->data['token'], 'SSL');
+			]]></search>
+			<add><![CDATA[
+			// Select City
+			$this->data['text_city'] = $this->language->get('text_city');
+			$this->data['city'] = $this->url->link('localisation/city', 'token=' . $this->session->data['token'], 'SSL');
+			]]></add>
+		</operation>
+	</file>
+
+	<file name="admin/view/template/common/header.tpl">
+		<operation info="Insert City menu in admin">
+			<search position="after"><![CDATA[
+              <li><a href="<?php echo $zone; ?>"><?php echo $text_zone; ?></a></li>
+			]]></search>
+			<add><![CDATA[
+              <li><a href="<?php echo $city; ?>"><?php echo $text_city; ?></a></li>
+			]]></add>
+		</operation>
+	</file>
+
+	<file name="admin/language/english/common/header.php">
+		<operation info="Insert City menu in admin">
+			<search position="before"><![CDATA[
+?>
+			]]></search>
+			<add><![CDATA[
+$_['text_city']                        = 'Cities';
+			]]></add>
+		</operation>
+	</file>
+
+	<file path="catalog/controller/account/", name="address.php, register.php">
+		<operation info="Get cities data">
+			<search position="before"><![CDATA[
+    	if (isset($this->request->post['city'])) {
+			]]></search>
+			<add><![CDATA[
+		$this->load->model('localisation/city');
+
+		$this->data['cities'] = $this->model_localisation_city->getCities();
+			]]></add>
+		</operation>
+	</file>
+
+	<file path="catalog/controller/affiliate/", name="edit.php, register.php">
+		<operation info="Get cities data">
+			<search position="before"><![CDATA[
+    	if (isset($this->request->post['city'])) {
+			]]></search>
+			<add><![CDATA[
+		$this->load->model('localisation/city');
+
+		$this->data['cities'] = $this->model_localisation_city->getCities();
+			]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/controller/checkout/guest.php">
+		<operation info="Get payment cities data">
+			<search position="before"><![CDATA[
+		if (isset($this->session->data['guest']['payment']['city'])) {
+			]]></search>
+			<add><![CDATA[
+		$this->load->model('localisation/city');
+
+		$this->data['cities'] = $this->model_localisation_city->getCities();
+			]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/controller/checkout/guest_shipping.php">
+		<operation info="Get shipping cities data">
+			<search position="before"><![CDATA[
+		if (isset($this->session->data['guest']['shipping']['city'])) {
+			]]></search>
+			<add><![CDATA[
+		$this->load->model('localisation/city');
+
+		$this->data['cities'] = $this->model_localisation_city->getCities();
+			]]></add>
+		</operation>
+	</file>
+
+	<file path="catalog/controller/checkout/" name="payment_address.php, register.php, shipping_address.php">
+		<operation info="Get payment cities data">
+			<search position="before" index="1"><![CDATA[
+		$this->load->model('localisation/country');
+			]]></search>
+			<add><![CDATA[
+		$this->load->model('localisation/city');
+
+		$this->data['cities'] = $this->model_localisation_city->getCities();
+			]]></add>
+		</operation>
+	</file>
+
+	<file path="catalog/view/theme/default/template/account/" name="address_form.tpl, register.tpl">
+		<operation info="Change City text field to select field">
+			<search position="replace"><![CDATA[
+          <td><input type="text" name="city" value="<?php echo $city; ?>" />
+			]]></search>
+			<add><![CDATA[
+          <td><select name="city">
+              <option value=""><?php echo $text_select; ?></option>
+              <?php foreach ($cities as $city_data) { ?>
+              <?php if ($city_data['city_id'] == $city) { ?>
+              <option value="<?php echo $city_data['name']; ?>" selected="selected"><?php echo $city_data['name']; ?></option>
+              <?php } else { ?>
+              <option value="<?php echo $city_data['name']; ?>"><?php echo $city_data['name']; ?></option>
+              <?php } ?>
+              <?php } ?>
+            </select>
+			]]></add>
+		</operation>
+	</file>
+
+	<file path="catalog/view/theme/default/template/affiliate/" name="edit.tpl, register.tpl">
+		<operation info="Change City text field to select field">
+			<search position="replace"><![CDATA[
+          <td><input type="text" name="city" value="<?php echo $city; ?>" />
+			]]></search>
+			<add><![CDATA[
+          <td><select name="city">
+              <option value=""><?php echo $text_select; ?></option>
+              <?php foreach ($cities as $city_data) { ?>
+              <?php if ($city_data['city_id'] == $city) { ?>
+              <option value="<?php echo $city_data['name']; ?>" selected="selected"><?php echo $city_data['name']; ?></option>
+              <?php } else { ?>
+              <option value="<?php echo $city_data['name']; ?>"><?php echo $city_data['name']; ?></option>
+              <?php } ?>
+              <?php } ?>
+            </select>
+			]]></add>
+		</operation>
+	</file>
+
+	<file path="catalog/view/theme/default/template/checkout/" name="guest_shipping.tpl, payment_address.tpl, shipping_address.tpl">
+		<operation info="Change City text field to select field">
+			<search position="replace"><![CDATA[
+      <td><input type="text" name="city" value="" class="large-field" /></td>
+			]]></search>
+			<add><![CDATA[
+      <td><select name="city" class="large-field">
+          <option value=""><?php echo $text_select; ?></option>
+          <?php foreach ($cities as $city_data) { ?>
+          <?php if ($city_data['city_id'] == $city) { ?>
+          <option value="<?php echo $city_data['name']; ?>" selected="selected"><?php echo $city_data['name']; ?></option>
+          <?php } else { ?>
+          <option value="<?php echo $city_data['name']; ?>"><?php echo $city_data['name']; ?></option>
+          <?php } ?>
+          <?php } ?>
+        </select></td>
+			]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/view/theme/default/template/checkout/guest.tpl">
+		<operation info="Change City text field to select field">
+			<search position="replace"><![CDATA[
+  <input type="text" name="city" value="<?php echo $city; ?>" class="large-field" />
+			]]></search>
+			<add><![CDATA[
+  <select name="city" class="large-field">
+    <option value=""><?php echo $text_select; ?></option>
+    <?php foreach ($cities as $city_data) { ?>
+    <?php if ($city_data['city_id'] == $city) { ?>
+    <option value="<?php echo $city_data['name']; ?>" selected="selected"><?php echo $city_data['name']; ?></option>
+    <?php } else { ?>
+    <option value="<?php echo $city_data['name']; ?>"><?php echo $city_data['name']; ?></option>
+    <?php } ?>
+    <?php } ?>
+  </select>
+			]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/view/theme/default/template/checkout/register.tpl">
+		<operation info="Change City text field to select field">
+			<search position="replace"><![CDATA[
+<input type="text" name="city" value="" class="large-field" />
+			]]></search>
+			<add><![CDATA[
+<select name="city" class="large-field">
+  <option value=""><?php echo $text_select; ?></option>
+  <?php foreach ($cities as $city_data) { ?>
+  <?php if ($city_data['name'] == $city) { ?>
+  <option value="<?php echo $city_data['name']; ?>" selected="selected"><?php echo $city_data['name']; ?></option>
+  <?php } else { ?>
+  <option value="<?php echo $city_data['name']; ?>"><?php echo $city_data['name']; ?></option>
+  <?php } ?>
+  <?php } ?>
+</select>
+			]]></add>
+		</operation>
+	</file>
+</modification>
