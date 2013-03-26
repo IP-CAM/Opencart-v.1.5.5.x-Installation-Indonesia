@@ -12,8 +12,9 @@ $_['column_status']		= 'Status';
 $_['column_action']		= 'Action';
 
 // Entry
-$_['entry_status']		= 'City Status:';
 $_['entry_name']		= 'City Name:';
+$_['entry_zone']		= 'Zone:';
+$_['entry_status']		= 'City Status:';
 
 // Error
 $_['error_permission']	= 'Warning: You do not have permission to modify cities!';
