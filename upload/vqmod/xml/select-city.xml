@@ -38,20 +38,7 @@ $_['text_city']                        = 'Cities';
 		</operation>
 	</file>
 
-	<file path="catalog/controller/account/" name="address.php,register.php">
-		<operation info="Get cities data">
-			<search position="before"><![CDATA[
-    	if (isset($this->request->post['city'])) {
-			]]></search>
-			<add><![CDATA[
-		$this->load->model('localisation/city');
-
-		$this->data['cities'] = $this->model_localisation_city->getCities();
-			]]></add>
-		</operation>
-	</file>
-
-	<file path="catalog/controller/affiliate/" name="edit.php,register.php">
+	<file path="catalog/controller/" name="account/address.php,account/register.php,affiliate/edit.php,affiliate/register.php">
 		<operation info="Get cities data">
 			<search position="before"><![CDATA[
     	if (isset($this->request->post['city'])) {
@@ -154,7 +141,6 @@ $_['text_city']                        = 'Cities';
 			<search position="after" offset="1"><![CDATA[
   <select name="zone_id" class="large-field">
 			]]></search>
-		</operation>
 			<add><![CDATA[
   <br />
   <br />
@@ -254,7 +240,6 @@ $_['text_city']                        = 'Cities';
 			<search position="after" offset="1"><![CDATA[
 <select name="zone_id" class="large-field">
 			]]></search>
-		</operation>
 			<add><![CDATA[
 <br />
 <br />
