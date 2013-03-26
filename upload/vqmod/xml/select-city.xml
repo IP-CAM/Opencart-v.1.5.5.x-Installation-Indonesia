@@ -103,12 +103,24 @@ $_['text_city']                        = 'Cities';
 		</operation>
 	</file>
 
-	<file path="catalog/view/theme/default/template/account/" name="address_form.tpl,register.tpl">
-		<operation info="Change City text field to select field">
-			<search position="replace"><![CDATA[
-          <td><input type="text" name="city" value="<?php echo $city; ?>" />
+	<file path="catalog/view/theme/default/template/" name="account/address_form.tpl,account/register.tpl,affiliate/edit.tpl,affiliate/register.tpl">
+		<operation info="Remove city field">
+			<search position="replace" offset="8"><![CDATA[
+          <td><input type="text" name="address_2" value="<?php echo $address_2; ?>" /></td>
 			]]></search>
 			<add><![CDATA[
+          <td><input type="text" name="address_2" value="<?php echo $address_2; ?>" /></td>
+        </tr>
+			]]></add>
+		</operation>
+
+		<operation info="Change city text field to select and place it after zone">
+			<search position="after" offset="2"><![CDATA[
+            <span class="error"><?php echo $error_zone; ?></span>
+			]]></search>
+			<add><![CDATA[
+        <tr>
+          <td><span class="required">*</span> <?php echo $entry_city; ?></td>
           <td><select name="city">
               <option value=""><?php echo $text_select; ?></option>
               <?php foreach ($cities as $city_data) { ?>
@@ -119,56 +131,33 @@ $_['text_city']                        = 'Cities';
               <?php } ?>
               <?php } ?>
             </select>
-			]]></add>
-		</operation>
-	</file>
-
-	<file path="catalog/view/theme/default/template/affiliate/" name="edit.tpl,register.tpl">
-		<operation info="Change City text field to select field">
-			<search position="replace"><![CDATA[
-          <td><input type="text" name="city" value="<?php echo $city; ?>" />
-			]]></search>
-			<add><![CDATA[
-          <td><select name="city">
-              <option value=""><?php echo $text_select; ?></option>
-              <?php foreach ($cities as $city_data) { ?>
-              <?php if ($city_data['city_id'] == $city) { ?>
-              <option value="<?php echo $city_data['name']; ?>" selected="selected"><?php echo $city_data['name']; ?></option>
-              <?php } else { ?>
-              <option value="<?php echo $city_data['name']; ?>"><?php echo $city_data['name']; ?></option>
-              <?php } ?>
-              <?php } ?>
-            </select>
-			]]></add>
-		</operation>
-	</file>
-
-	<file path="catalog/view/theme/default/template/checkout/" name="guest_shipping.tpl,payment_address.tpl,shipping_address.tpl">
-		<operation info="Change City text field to select field">
-			<search position="replace"><![CDATA[
-      <td><input type="text" name="city" value="" class="large-field" /></td>
-			]]></search>
-			<add><![CDATA[
-      <td><select name="city" class="large-field">
-          <option value=""><?php echo $text_select; ?></option>
-          <?php foreach ($cities as $city_data) { ?>
-          <?php if ($city_data['city_id'] == $city) { ?>
-          <option value="<?php echo $city_data['name']; ?>" selected="selected"><?php echo $city_data['name']; ?></option>
-          <?php } else { ?>
-          <option value="<?php echo $city_data['name']; ?>"><?php echo $city_data['name']; ?></option>
-          <?php } ?>
-          <?php } ?>
-        </select></td>
+            <?php if ($error_city) { ?>
+            <span class="error"><?php echo $error_city; ?></span>
+            <?php } ?>
+          </td>
+        </tr>
 			]]></add>
 		</operation>
 	</file>
 
 	<file name="catalog/view/theme/default/template/checkout/guest.tpl">
-		<operation info="Change City text field to select field">
-			<search position="replace"><![CDATA[
-  <input type="text" name="city" value="<?php echo $city; ?>" class="large-field" />
+		<operation info="Remove city field">
+			<search position="replace" offset="4"><![CDATA[
+  <input type="text" name="address_2" value="<?php echo $address_2; ?>" class="large-field" />
 			]]></search>
 			<add><![CDATA[
+  <input type="text" name="address_2" value="<?php echo $address_2; ?>" class="large-field" />
+			]]></add>
+		</operation>
+
+		<operation info="Change city text field to select and place it after zone">
+			<search position="after" offset="1"><![CDATA[
+  <select name="zone_id" class="large-field">
+			]]></search>
+		</operation>
+			<add><![CDATA[
+  <br />
+  <br />
   <select name="city" class="large-field">
     <option value=""><?php echo $text_select; ?></option>
     <?php foreach ($cities as $city_data) { ?>
@@ -183,16 +172,96 @@ $_['text_city']                        = 'Cities';
 		</operation>
 	</file>
 
-	<file name="catalog/view/theme/default/template/checkout/register.tpl">
-		<operation info="Change City text field to select field">
-			<search position="replace"><![CDATA[
-<input type="text" name="city" value="" class="large-field" />
+	<file name="catalog/view/theme/default/template/checkout/guest_shipping.tpl">
+		<operation info="Remove city field">
+			<search position="replace" offset="5"><![CDATA[
+    <td><input type="text" name="address_2" value="<?php echo $address_2; ?>" class="large-field" /></td>
 			]]></search>
 			<add><![CDATA[
+    <td><input type="text" name="address_2" value="<?php echo $address_2; ?>" class="large-field" /></td>
+  </tr>
+			]]></add>
+		</operation>
+
+		<operation info="Change city text field to select and place it after zone">
+			<search position="after" offset="2"><![CDATA[
+    <td><select name="zone_id" class="large-field">
+			]]></search>
+			<add><![CDATA[
+  <tr>
+    <td><span class="required">*</span> <?php echo $entry_city; ?></td>
+    <td><select name="city" class="large-field">
+        <option value=""><?php echo $text_select; ?></option>
+        <?php foreach ($cities as $city_data) { ?>
+        <?php if ($city_data['city_id'] == $city) { ?>
+        <option value="<?php echo $city_data['name']; ?>" selected="selected"><?php echo $city_data['name']; ?></option>
+        <?php } else { ?>
+        <option value="<?php echo $city_data['name']; ?>"><?php echo $city_data['name']; ?></option>
+        <?php } ?>
+        <?php } ?>
+      </select>
+    </td>
+  </tr>
+			]]></add>
+		</operation>
+	</file>
+
+	<file path="catalog/view/theme/default/template/checkout/" name="payment_address.tpl,shipping_address.tpl">
+		<operation info="Remove city field">
+			<search position="replace" offset="5"><![CDATA[
+      <td><input type="text" name="address_2" value="" class="large-field" /></td>
+			]]></search>
+			<add><![CDATA[
+      <td><input type="text" name="address_2" value="" class="large-field" /></td>
+    </tr>
+			]]></add>
+		</operation>
+
+		<operation info="Change city text field to select and place it after zone">
+			<search position="after" offset="2"><![CDATA[
+      <td><select name="zone_id" class="large-field">
+			]]></search>
+			<add><![CDATA[
+    <tr>
+      <td><span class="required">*</span> <?php echo $entry_city; ?></td>
+      <td><select name="city" class="large-field">
+          <option value=""><?php echo $text_select; ?></option>
+          <?php foreach ($cities as $city_data) { ?>
+          <?php if ($city_data['city_id'] == $city) { ?>
+          <option value="<?php echo $city_data['name']; ?>" selected="selected"><?php echo $city_data['name']; ?></option>
+          <?php } else { ?>
+          <option value="<?php echo $city_data['name']; ?>"><?php echo $city_data['name']; ?></option>
+          <?php } ?>
+          <?php } ?>
+        </select>
+      </td>
+    </tr>
+			]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/view/theme/default/template/checkout/register.tpl">
+		<operation info="Remove city field">
+			<search position="replace" offset="4"><![CDATA[
+<input type="text" name="address_2" value="" class="large-field" />
+			]]></search>
+			<add><![CDATA[
+<input type="text" name="address_2" value="" class="large-field" />
+			]]></add>
+		</operation>
+
+		<operation info="Change city text field to select and place it after zone">
+			<search position="after" offset="1"><![CDATA[
+<select name="zone_id" class="large-field">
+			]]></search>
+		</operation>
+			<add><![CDATA[
+<br />
+<br />
 <select name="city" class="large-field">
   <option value=""><?php echo $text_select; ?></option>
   <?php foreach ($cities as $city_data) { ?>
-  <?php if ($city_data['name'] == $city) { ?>
+  <?php if ($city_data['city_id'] == $city) { ?>
   <option value="<?php echo $city_data['name']; ?>" selected="selected"><?php echo $city_data['name']; ?></option>
   <?php } else { ?>
   <option value="<?php echo $city_data['name']; ?>"><?php echo $city_data['name']; ?></option>
