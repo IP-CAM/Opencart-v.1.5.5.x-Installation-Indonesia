@@ -10,7 +10,6 @@
 			$this->data['zone'] = $this->url->link('localisation/zone', 'token=' . $this->session->data['token'], 'SSL');
 			]]></search>
 			<add><![CDATA[
-			// Select City
 			$this->data['text_city'] = $this->language->get('text_city');
 			$this->data['city'] = $this->url->link('localisation/city', 'token=' . $this->session->data['token'], 'SSL');
 			]]></add>
@@ -39,7 +38,7 @@ $_['text_city']                        = 'Cities';
 		</operation>
 	</file>
 
-	<file path="catalog/controller/account/", name="address.php, register.php">
+	<file path="catalog/controller/account/" name="address.php,register.php">
 		<operation info="Get cities data">
 			<search position="before"><![CDATA[
     	if (isset($this->request->post['city'])) {
@@ -52,7 +51,7 @@ $_['text_city']                        = 'Cities';
 		</operation>
 	</file>
 
-	<file path="catalog/controller/affiliate/", name="edit.php, register.php">
+	<file path="catalog/controller/affiliate/" name="edit.php,register.php">
 		<operation info="Get cities data">
 			<search position="before"><![CDATA[
     	if (isset($this->request->post['city'])) {
@@ -91,7 +90,7 @@ $_['text_city']                        = 'Cities';
 		</operation>
 	</file>
 
-	<file path="catalog/controller/checkout/" name="payment_address.php, register.php, shipping_address.php">
+	<file path="catalog/controller/checkout/" name="payment_address.php,register.php,shipping_address.php">
 		<operation info="Get payment cities data">
 			<search position="before" index="1"><![CDATA[
 		$this->load->model('localisation/country');
@@ -104,7 +103,7 @@ $_['text_city']                        = 'Cities';
 		</operation>
 	</file>
 
-	<file path="catalog/view/theme/default/template/account/" name="address_form.tpl, register.tpl">
+	<file path="catalog/view/theme/default/template/account/" name="address_form.tpl,register.tpl">
 		<operation info="Change City text field to select field">
 			<search position="replace"><![CDATA[
           <td><input type="text" name="city" value="<?php echo $city; ?>" />
@@ -124,7 +123,7 @@ $_['text_city']                        = 'Cities';
 		</operation>
 	</file>
 
-	<file path="catalog/view/theme/default/template/affiliate/" name="edit.tpl, register.tpl">
+	<file path="catalog/view/theme/default/template/affiliate/" name="edit.tpl,register.tpl">
 		<operation info="Change City text field to select field">
 			<search position="replace"><![CDATA[
           <td><input type="text" name="city" value="<?php echo $city; ?>" />
@@ -144,7 +143,7 @@ $_['text_city']                        = 'Cities';
 		</operation>
 	</file>
 
-	<file path="catalog/view/theme/default/template/checkout/" name="guest_shipping.tpl, payment_address.tpl, shipping_address.tpl">
+	<file path="catalog/view/theme/default/template/checkout/" name="guest_shipping.tpl,payment_address.tpl,shipping_address.tpl">
 		<operation info="Change City text field to select field">
 			<search position="replace"><![CDATA[
       <td><input type="text" name="city" value="" class="large-field" /></td>
