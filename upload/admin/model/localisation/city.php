@@ -25,8 +25,10 @@ class ModelLocalisationCity extends Model {
 	}
 
 	public function getCities($data = array()) {
+		$city_data = '';
+
 		if ($data) {
-			$sql = "SELECT c.city_id, c.zone_id, (SELECT name FROM " . DB_PREFIX . "zone z WHERE z.zone_id = c.zone_id AND z.status = '1') AS zone FROM " . DB_PREFIX . "city c";
+			$sql = "SELECT c.city_id AS city_id, c.zone_id AS zone_id, c.name AS name, c.status AS status, (SELECT name FROM " . DB_PREFIX . "zone z WHERE z.zone_id = c.zone_id AND z.status = '1') AS zone FROM " . DB_PREFIX . "city c";
 
 			$sort_data = array(
 				'name',
