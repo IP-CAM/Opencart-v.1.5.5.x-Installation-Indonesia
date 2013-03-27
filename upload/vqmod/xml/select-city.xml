@@ -49,6 +49,34 @@ $_['text_city']                        = 'Cities';
 		$this->data['cities'] = $this->model_localisation_city->getCities();
 			]]></add>
 		</operation>
+
+		<operation info="Add AJAX response">
+			<search position="before" offset="1"><![CDATA[
+?>
+			]]></search>
+			<add><![CDATA[
+	public function zone() {
+		$json = array();
+
+		$this->load->model('localisation/zone');
+
+    	$zone_info = $this->model_localisation_zone->getZone($this->request->get['zone_id']);
+
+		if ($zone_info) {
+			$this->load->model('localisation/city');
+
+			$json = array(
+				'zone_id'	=> $zone_info['zone_id'],
+				'name'		=> $zone_info['name'],
+				'city'		=> $this->model_localisation_city->getCitiesByZoneId($this->request->get['zone_id']),
+				'status'	=> $zone_info['status']
+			);
+		}
+
+		$this->response->setOutput(json_encode($json));
+	}
+			]]></add>
+		</operation>
 	</file>
 
 	<file name="catalog/controller/checkout/guest.php">
@@ -90,6 +118,36 @@ $_['text_city']                        = 'Cities';
 		</operation>
 	</file>
 
+	<file name="catalog/controller/checkout/checkout.php">
+		<operation info="Add AJAX response">
+			<search position="before" offset="1"><![CDATA[
+?>
+			]]></search>
+			<add><![CDATA[
+	public function zone() {
+		$json = array();
+
+		$this->load->model('localisation/zone');
+
+    	$zone_info = $this->model_localisation_zone->getZone($this->request->get['zone_id']);
+
+		if ($zone_info) {
+			$this->load->model('localisation/city');
+
+			$json = array(
+				'zone_id'	=> $zone_info['zone_id'],
+				'name'		=> $zone_info['name'],
+				'city'		=> $this->model_localisation_city->getCitiesByZoneId($this->request->get['zone_id']),
+				'status'	=> $zone_info['status']
+			);
+		}
+
+		$this->response->setOutput(json_encode($json));
+	}
+			]]></add>
+		</operation>
+	</file>
+
 	<file path="catalog/view/theme/default/template/" name="account/address_form.tpl,account/register.tpl,affiliate/edit.tpl,affiliate/register.tpl">
 		<operation info="Remove city field">
 			<search position="replace" offset="8"><![CDATA[
@@ -109,20 +167,60 @@ $_['text_city']                        = 'Cities';
         <tr>
           <td><span class="required">*</span> <?php echo $entry_city; ?></td>
           <td><select name="city">
-              <option value=""><?php echo $text_select; ?></option>
-              <?php foreach ($cities as $city_data) { ?>
-              <?php if ($city_data['city_id'] == $city) { ?>
-              <option value="<?php echo $city_data['name']; ?>" selected="selected"><?php echo $city_data['name']; ?></option>
-              <?php } else { ?>
-              <option value="<?php echo $city_data['name']; ?>"><?php echo $city_data['name']; ?></option>
-              <?php } ?>
-              <?php } ?>
+
             </select>
             <?php if ($error_city) { ?>
             <span class="error"><?php echo $error_city; ?></span>
             <?php } ?>
           </td>
         </tr>
+			]]></add>
+		</operation>
+
+		<operation info="Add AJAX change city based on selected zone">
+			<search position="before"><![CDATA[
+<?php echo $footer; ?>
+			]]></search>
+			<add><![CDATA[
+<script type="text/javascript"><!--
+$('select[name=\'zone_id\']').bind('change', function() {
+	if (this.value == '') return;
+	$.ajax({
+		url: 'index.php?route=account/register/zone&zone_id=' + this.value,
+		dataType: 'json',
+		beforeSend: function() {
+			$('select[name=\'zone_id\']').after('<span class="wait">&nbsp;<img src="catalog/view/theme/default/image/loading.gif" alt="" /></span>');
+		},
+		complete: function() {
+			$('.wait').remove();
+		},
+		success: function(json) {
+			html = '<option value=""><?php echo $text_select; ?></option>';
+
+			if (json['city'] != '') {
+				for (i = 0; i < json['city'].length; i++) {
+        			html += '<option value="' + json['city'][i]['name'] + '"';
+
+					if (json['city'][i]['name'] == '<?php echo $city; ?>') {
+	      				html += ' selected="selected"';
+	    			}
+
+	    			html += '>' + json['city'][i]['name'] + '</option>';
+				}
+			} else {
+				html += '<option value="0" selected="selected"><?php echo $text_none; ?></option>';
+			}
+
+			$('select[name=\'city\']').html(html);
+		},
+		error: function(xhr, ajaxOptions, thrownError) {
+			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+		}
+	});
+});
+
+$('select[name=\'zone_id\']').trigger('change');
+//--></script>
 			]]></add>
 		</operation>
 	</file>
@@ -158,6 +256,55 @@ $_['text_city']                        = 'Cities';
 		</operation>
 	</file>
 
+	<file path="catalog/view/theme/default/template/checkout/" name="guest.tpl,payment_address.tpl,register.tpl">
+		<operation info="Add AJAX change city based on selected zone">
+			<search position="after" offset="1"><![CDATA[
+$('#payment-address select[name=\'country_id\']').trigger('change');
+			]]></search>
+			<add><![CDATA[
+<script type="text/javascript"><!--
+$('#payment-address select[name=\'zone_id\']').bind('change', function() {
+	if (this.value == '') return;
+	$.ajax({
+		url: 'index.php?route=checkout/checkout/zone&zone_id=' + this.value,
+		dataType: 'json',
+		beforeSend: function() {
+			$('#payment-address select[name=\'zone_id\']').after('<span class="wait">&nbsp;<img src="catalog/view/theme/default/image/loading.gif" alt="" /></span>');
+		},
+		complete: function() {
+			$('.wait').remove();
+		},
+		success: function(json) {
+			html = '<option value=""><?php echo $text_select; ?></option>';
+
+			if (json['city'] != '') {
+				for (i = 0; i < json['city'].length; i++) {
+        			html += '<option value="' + json['city'][i]['name'] + '"';
+
+					if (json['city'][i]['name'] == '<?php echo $city; ?>') {
+	      				html += ' selected="selected"';
+	    			}
+
+	    			html += '>' + json['city'][i]['name'] + '</option>';
+				}
+			} else {
+				html += '<option value="0" selected="selected"><?php echo $text_none; ?></option>';
+			}
+
+			$('#payment-address select[name=\'city\']').html(html);
+		},
+		error: function(xhr, ajaxOptions, thrownError) {
+			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+		}
+	});
+});
+
+$('#payment-address select[name=\'zone_id\']').trigger('change');
+//--></script>
+			]]></add>
+		</operation>
+	</file>
+
 	<file name="catalog/view/theme/default/template/checkout/guest_shipping.tpl">
 		<operation info="Remove city field">
 			<search position="replace" offset="5"><![CDATA[
@@ -188,6 +335,55 @@ $_['text_city']                        = 'Cities';
       </select>
     </td>
   </tr>
+			]]></add>
+		</operation>
+	</file>
+
+	<file path="catalog/view/theme/default/template/checkout/" name="guest_shipping.tpl,shipping_address.tpl">
+		<operation info="Add AJAX change city based on selected zone">
+			<search position="after" offset="1"><![CDATA[
+$('#shipping-address select[name=\'country_id\']').trigger('change');
+			]]></search>
+			<add><![CDATA[
+<script type="text/javascript"><!--
+$('#shipping-address select[name=\'zone_id\']').bind('change', function() {
+	if (this.value == '') return;
+	$.ajax({
+		url: 'index.php?route=checkout/checkout/zone&zone_id=' + this.value,
+		dataType: 'json',
+		beforeSend: function() {
+			$('#shipping-address select[name=\'zone_id\']').after('<span class="wait">&nbsp;<img src="catalog/view/theme/default/image/loading.gif" alt="" /></span>');
+		},
+		complete: function() {
+			$('.wait').remove();
+		},
+		success: function(json) {
+			html = '<option value=""><?php echo $text_select; ?></option>';
+
+			if (json['city'] != '') {
+				for (i = 0; i < json['city'].length; i++) {
+        			html += '<option value="' + json['city'][i]['name'] + '"';
+
+					if (json['city'][i]['name'] == '<?php echo $city; ?>') {
+	      				html += ' selected="selected"';
+	    			}
+
+	    			html += '>' + json['city'][i]['name'] + '</option>';
+				}
+			} else {
+				html += '<option value="0" selected="selected"><?php echo $text_none; ?></option>';
+			}
+
+			$('#shipping-address select[name=\'city\']').html(html);
+		},
+		error: function(xhr, ajaxOptions, thrownError) {
+			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+		}
+	});
+});
+
+$('#shipping-address select[name=\'zone_id\']').trigger('change');
+//--></script>
 			]]></add>
 		</operation>
 	</file>
