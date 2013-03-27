@@ -154,7 +154,7 @@ $_['text_city']                        = 'Cities';
 City must be between 2 and 128 characters!
 			]]></search>
 			<add><![CDATA[
-Please a city!
+Please select a city!
 			]]></add>
 		</operation>
 	</file>
@@ -279,13 +279,7 @@ $('#payment-address select[name=\'zone_id\']').bind('change', function() {
 
 			if (json['city'] != '') {
 				for (i = 0; i < json['city'].length; i++) {
-        			html += '<option value="' + json['city'][i]['name'] + '"';
-
-					if (json['city'][i]['name'] == '<?php echo $city; ?>') {
-	      				html += ' selected="selected"';
-	    			}
-
-	    			html += '>' + json['city'][i]['name'] + '</option>';
+        			html += '<option value="' + json['city'][i]['name'] + '">' + json['city'][i]['name'] + '</option>';
 				}
 			} else {
 				html += '<option value="0" selected="selected"><?php echo $text_none; ?></option>';
@@ -419,7 +413,37 @@ $('#shipping-address select[name=\'zone_id\']').trigger('change');
 			<add><![CDATA[
 <br />
 <br />
+<span class="required">*</span> <?php echo $entry_city; ?><br />
 <select name="city" class="large-field"><option value=""><?php echo $text_select; ?></option></select>
+			]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/view/theme/default/template/checkout/checkout.tpl">
+		<operation info="Change city error message">
+			<search position="replace"><![CDATA[
+					$('#payment-address input[name=\'city\']').after('<span class="error">' + json['error']['city'] + '</span>');
+			]]></search>
+			<add><![CDATA[
+					$('#payment-address select[name=\'city\']').after('<span class="error">' + json['error']['city'] + '</span>');
+			]]></add>
+		</operation>
+
+		<operation info="Change city error message">
+			<search position="replace"><![CDATA[
+					$('#shipping-address input[name=\'city\']').after('<span class="error">' + json['error']['city'] + '</span>');
+			]]></search>
+			<add><![CDATA[
+					$('#shipping-address select[name=\'city\']').after('<span class="error">' + json['error']['city'] + '</span>');
+			]]></add>
+		</operation>
+
+		<operation info="Change city error message">
+			<search position="replace"><![CDATA[
+					$('#payment-address input[name=\'city\'] + br').after('<span class="error">' + json['error']['city'] + '</span>');
+			]]></search>
+			<add><![CDATA[
+					$('#payment-address select[name=\'city\'] + br').after('<span class="error">' + json['error']['city'] + '</span>');
 			]]></add>
 		</operation>
 	</file>
