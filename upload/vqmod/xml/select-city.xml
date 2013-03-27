@@ -148,6 +148,17 @@ $_['text_city']                        = 'Cities';
 		</operation>
 	</file>
 
+	<file path="catalog/language/english/" name="account/address.php,account/register.php,affiliate/edit.php,affiliate/register.php,checkout/checkout.php">
+		<operation info="Change city error message">
+			<search position="replace"><![CDATA[
+City must be between 2 and 128 characters!
+			]]></search>
+			<add><![CDATA[
+Please a city!
+			]]></add>
+		</operation>
+	</file>
+
 	<file path="catalog/view/theme/default/template/" name="account/address_form.tpl,account/register.tpl,affiliate/edit.tpl,affiliate/register.tpl">
 		<operation info="Remove city field">
 			<search position="replace" offset="8"><![CDATA[
@@ -166,7 +177,7 @@ $_['text_city']                        = 'Cities';
 			<add><![CDATA[
         <tr>
           <td><span class="required">*</span> <?php echo $entry_city; ?></td>
-          <td><select name="city"></select>
+          <td><select name="city"><option value=""><?php echo $text_select; ?></option></select>
             <?php if ($error_city) { ?>
             <span class="error"><?php echo $error_city; ?></span>
             <?php } ?>
@@ -240,7 +251,7 @@ $('select[name=\'zone_id\']').trigger('change');
 			<add><![CDATA[
   <br />
   <br />
-  <select name="city" class="large-field"></select>
+  <select name="city" class="large-field"><option value=""><?php echo $text_select; ?></option></select>
 			]]></add>
 		</operation>
 	</file>
@@ -312,7 +323,7 @@ $('#payment-address select[name=\'zone_id\']').trigger('change');
 			<add><![CDATA[
   <tr>
     <td><span class="required">*</span> <?php echo $entry_city; ?></td>
-    <td><select name="city" class="large-field"></select></td>
+    <td><select name="city" class="large-field"><option value=""><?php echo $text_select; ?></option></select></td>
   </tr>
 			]]></add>
 		</operation>
@@ -385,7 +396,7 @@ $('#shipping-address select[name=\'zone_id\']').trigger('change');
 			<add><![CDATA[
     <tr>
       <td><span class="required">*</span> <?php echo $entry_city; ?></td>
-      <td><select name="city" class="large-field"></select></td>
+      <td><select name="city" class="large-field"><option value=""><?php echo $text_select; ?></option></select></td>
     </tr>
 			]]></add>
 		</operation>
@@ -408,7 +419,7 @@ $('#shipping-address select[name=\'zone_id\']').trigger('change');
 			<add><![CDATA[
 <br />
 <br />
-<select name="city" class="large-field"></select>
+<select name="city" class="large-field"><option value=""><?php echo $text_select; ?></option></select>
 			]]></add>
 		</operation>
 	</file>
