@@ -5471,7 +5471,7 @@ INSERT INTO `oc_zone` (`zone_id`, `country_id`, `code`, `name`, `status`) VALUES
 (1508, 100, 'BA', 'Bali', 1),
 (1509, 100, 'BT', 'Banten', 1),
 (1510, 100, 'BE', 'Bengkulu', 1),
-(1511, 100, 'BD', 'BoDeTaBek', 1),
+(1511, 100, 'BD', 'BoDeTaBek', 0),
 (1512, 100, 'GO', 'Gorontalo', 1),
 (1513, 100, 'JK', 'Jakarta Raya', 1),
 (1514, 100, 'JA', 'Jambi', 1),
