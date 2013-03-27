@@ -166,9 +166,7 @@ $_['text_city']                        = 'Cities';
 			<add><![CDATA[
         <tr>
           <td><span class="required">*</span> <?php echo $entry_city; ?></td>
-          <td><select name="city">
-
-            </select>
+          <td><select name="city"></select>
             <?php if ($error_city) { ?>
             <span class="error"><?php echo $error_city; ?></span>
             <?php } ?>
@@ -242,16 +240,7 @@ $('select[name=\'zone_id\']').trigger('change');
 			<add><![CDATA[
   <br />
   <br />
-  <select name="city" class="large-field">
-    <option value=""><?php echo $text_select; ?></option>
-    <?php foreach ($cities as $city_data) { ?>
-    <?php if ($city_data['city_id'] == $city) { ?>
-    <option value="<?php echo $city_data['name']; ?>" selected="selected"><?php echo $city_data['name']; ?></option>
-    <?php } else { ?>
-    <option value="<?php echo $city_data['name']; ?>"><?php echo $city_data['name']; ?></option>
-    <?php } ?>
-    <?php } ?>
-  </select>
+  <select name="city" class="large-field"></select>
 			]]></add>
 		</operation>
 	</file>
@@ -323,17 +312,7 @@ $('#payment-address select[name=\'zone_id\']').trigger('change');
 			<add><![CDATA[
   <tr>
     <td><span class="required">*</span> <?php echo $entry_city; ?></td>
-    <td><select name="city" class="large-field">
-        <option value=""><?php echo $text_select; ?></option>
-        <?php foreach ($cities as $city_data) { ?>
-        <?php if ($city_data['city_id'] == $city) { ?>
-        <option value="<?php echo $city_data['name']; ?>" selected="selected"><?php echo $city_data['name']; ?></option>
-        <?php } else { ?>
-        <option value="<?php echo $city_data['name']; ?>"><?php echo $city_data['name']; ?></option>
-        <?php } ?>
-        <?php } ?>
-      </select>
-    </td>
+    <td><select name="city" class="large-field"></select></td>
   </tr>
 			]]></add>
 		</operation>
@@ -406,17 +385,7 @@ $('#shipping-address select[name=\'zone_id\']').trigger('change');
 			<add><![CDATA[
     <tr>
       <td><span class="required">*</span> <?php echo $entry_city; ?></td>
-      <td><select name="city" class="large-field">
-          <option value=""><?php echo $text_select; ?></option>
-          <?php foreach ($cities as $city_data) { ?>
-          <?php if ($city_data['city_id'] == $city) { ?>
-          <option value="<?php echo $city_data['name']; ?>" selected="selected"><?php echo $city_data['name']; ?></option>
-          <?php } else { ?>
-          <option value="<?php echo $city_data['name']; ?>"><?php echo $city_data['name']; ?></option>
-          <?php } ?>
-          <?php } ?>
-        </select>
-      </td>
+      <td><select name="city" class="large-field"></select></td>
     </tr>
 			]]></add>
 		</operation>
@@ -439,16 +408,7 @@ $('#shipping-address select[name=\'zone_id\']').trigger('change');
 			<add><![CDATA[
 <br />
 <br />
-<select name="city" class="large-field">
-  <option value=""><?php echo $text_select; ?></option>
-  <?php foreach ($cities as $city_data) { ?>
-  <?php if ($city_data['city_id'] == $city) { ?>
-  <option value="<?php echo $city_data['name']; ?>" selected="selected"><?php echo $city_data['name']; ?></option>
-  <?php } else { ?>
-  <option value="<?php echo $city_data['name']; ?>"><?php echo $city_data['name']; ?></option>
-  <?php } ?>
-  <?php } ?>
-</select>
+<select name="city" class="large-field"></select>
 			]]></add>
 		</operation>
 	</file>
