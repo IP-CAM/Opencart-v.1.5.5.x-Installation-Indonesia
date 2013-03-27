@@ -22,17 +22,17 @@
           <thead>
             <tr>
               <td width="1" style="text-align: center;"><input type="checkbox" onclick="$('input[name*=\'selected\']').attr('checked', this.checked);" /></td>
-              <td class="left"><?php if ($sort == 'name') { ?>
-                <a href="<?php echo $sort_name; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_name; ?></a>
-                <?php } else { ?>
-                <a href="<?php echo $sort_name; ?>"><?php echo $column_name; ?></a>
-                <?php } ?></td>
               <td class="left"><?php if ($sort == 'zone') { ?>
                 <a href="<?php echo $sort_zone; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_zone; ?></a>
                 <?php } else { ?>
                 <a href="<?php echo $sort_zone; ?>"><?php echo $column_zone; ?></a>
                 <?php } ?></td>
-              <td class="left"><a href="<?php echo $sort_status; ?>"><?php echo $column_status; ?></a></td>
+              <td class="left"><?php if ($sort == 'name') { ?>
+                <a href="<?php echo $sort_name; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_name; ?></a>
+                <?php } else { ?>
+                <a href="<?php echo $sort_name; ?>"><?php echo $column_name; ?></a>
+                <?php } ?></td>
+              <td class="left"><?php echo $column_status; ?></td>
               <td class="right"><?php echo $column_action; ?></td>
             </tr>
           </thead>
@@ -45,8 +45,8 @@
                 <?php } else { ?>
                 <input type="checkbox" name="selected[]" value="<?php echo $city['city_id']; ?>" />
                 <?php } ?></td>
-              <td class="left"><?php echo $city['name']; ?></td>
               <td class="left"><?php echo $city['zone']; ?></td>
+              <td class="left"><?php echo $city['name']; ?></td>
               <td class="left"><?php echo $city['status']; ?></td>
               <td class="right"><?php foreach ($city['action'] as $action) { ?>
                 [ <a href="<?php echo $action['href']; ?>"><?php echo $action['text']; ?></a> ]
