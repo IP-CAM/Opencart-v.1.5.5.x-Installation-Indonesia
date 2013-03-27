@@ -30,7 +30,7 @@ CREATE TABLE `oc_address` (
   `tax_id` varchar(32) NOT NULL,
   `address_1` varchar(128) NOT NULL,
   `address_2` varchar(128) NOT NULL,
-  `city_id` int(11) NOT NULL DEFAULT '0',
+  `city` varchar(128) NOT NULL,
   `postcode` varchar(10) NOT NULL,
   `country_id` int(11) NOT NULL DEFAULT '0',
   `zone_id` int(11) NOT NULL DEFAULT '0',
