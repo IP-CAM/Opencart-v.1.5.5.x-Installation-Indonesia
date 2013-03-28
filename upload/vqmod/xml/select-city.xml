@@ -99,7 +99,7 @@ $_['text_city']						= 'Cities';
 				<td><select name="address[<?php echo $address_row; ?>][zone_id]">
 			]]></search>
 			<add><![CDATA[
-				<td><select name="address[<?php echo $address_row; ?>][zone_id]"onchange="zone(this, '<?php echo $address_row; ?>', '<?php echo $address['city']; ?>');">
+				<td><select name="address[<?php echo $address_row; ?>][zone_id]" onchange="zone(this, '<?php echo $address_row; ?>', '<?php echo $address['city']; ?>');">
 			]]></add>
 		</operation>
 
@@ -157,6 +157,37 @@ function zone(element, index, city) {
 
 $('select[name$=\'[zone_id]\']').trigger('change');
 //--></script>
+			]]></add>
+		</operation>
+
+		<operation info="Remove city field in addAddress function">
+			<search position="replace" offset="5"><![CDATA[
+	html += '      <td><input type="text" name="address[' + address_row + '][address_2]" value="" /></td>';
+			]]></search>
+			<add><![CDATA[
+	html += '      <td><input type="text" name="address[' + address_row + '][address_2]" value="" /></td>';
+	html += '    </tr>';
+			]]></add>
+		</operation>
+
+		<operation info="Add onchange attribute in zone select">
+			<search position="replace"><![CDATA[
+html += '      <td><select name="address[' + address_row + '][zone_id]"><option value="false"><?php echo $this->language->get('text_none'); ?></option></select></td>';
+			]]></search>
+			<add><![CDATA[
+html += '      <td><select name="address[' + address_row + '][zone_id]" onchange="zone(this, \'' + address_row + '\', \'0\');"><option value="false"><?php echo $this->language->get('text_none'); ?></option></select></td>';
+			]]></add>
+		</operation>
+
+		<operation info="Change city text field to select and place it after zone in addAddress function">
+			<search position="before" offset="1"><![CDATA[
+	html += '      <td><?php echo $entry_default; ?></td>';
+			]]></search>
+			<add><![CDATA[
+    html += '    <tr>';
+    html += '      <td><span class="required">*</span> <?php echo $entry_city; ?></td>';
+    html += '      <td><select name="address[' + address_row + '][city]"><option value="false"><?php echo $this->language->get('text_none'); ?></option></select></td>';
+    html += '    </tr>';
 			]]></add>
 		</operation>
 	</file>
