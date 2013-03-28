@@ -165,32 +165,32 @@ $('select[name$=\'[zone_id]\']').trigger('change');
 
 		<operation info="Remove city field in addAddress function">
 			<search position="replace" offset="5"><![CDATA[
-	html += '      <td><input type="text" name="address[' + address_row + '][address_2]" value="" /></td>';
+	html += '	  <td><input type="text" name="address[' + address_row + '][address_2]" value="" /></td>';
 			]]></search>
 			<add><![CDATA[
-	html += '      <td><input type="text" name="address[' + address_row + '][address_2]" value="" /></td>';
-	html += '    </tr>';
+	html += '	  <td><input type="text" name="address[' + address_row + '][address_2]" value="" /></td>';
+	html += '	</tr>';
 			]]></add>
 		</operation>
 
 		<operation info="Add onchange attribute in zone select">
 			<search position="replace"><![CDATA[
-html += '      <td><select name="address[' + address_row + '][zone_id]"><option value="false"><?php echo $this->language->get('text_none'); ?></option></select></td>';
+html += '	  <td><select name="address[' + address_row + '][zone_id]"><option value="false"><?php echo $this->language->get('text_none'); ?></option></select></td>';
 			]]></search>
 			<add><![CDATA[
-html += '      <td><select name="address[' + address_row + '][zone_id]" onchange="zone(this, \'' + address_row + '\', \'0\');"><option value="false"><?php echo $this->language->get('text_none'); ?></option></select></td>';
+html += '	  <td><select name="address[' + address_row + '][zone_id]" onchange="zone(this, \'' + address_row + '\', \'0\');"><option value="false"><?php echo $this->language->get('text_none'); ?></option></select></td>';
 			]]></add>
 		</operation>
 
 		<operation info="Change city text field to select and place it after zone in addAddress function">
 			<search position="before" offset="1"><![CDATA[
-	html += '      <td><?php echo $entry_default; ?></td>';
+	html += '	  <td><?php echo $entry_default; ?></td>';
 			]]></search>
 			<add><![CDATA[
-    html += '    <tr>';
-    html += '      <td><span class="required">*</span> <?php echo $entry_city; ?></td>';
-    html += '      <td><select name="address[' + address_row + '][city]"><option value="false"><?php echo $this->language->get('text_none'); ?></option></select></td>';
-    html += '    </tr>';
+	html += '	<tr>';
+	html += '	  <td><span class="required">*</span> <?php echo $entry_city; ?></td>';
+	html += '	  <td><select name="address[' + address_row + '][city]"><option value="false"><?php echo $this->language->get('text_none'); ?></option></select></td>';
+	html += '	</tr>';
 			]]></add>
 		</operation>
 	</file>
@@ -346,52 +346,52 @@ $('select[name=\'zone_id\']').trigger('change');
 	<file name="admin/view/template/sale/order_form.tpl">
 		<operation info="Remove city field">
 			<search position="replace" offset="8"><![CDATA[
-              <td><input type="text" name="payment_address_2" value="<?php echo $payment_address_2; ?>" /></td>
+			  <td><input type="text" name="payment_address_2" value="<?php echo $payment_address_2; ?>" /></td>
 			]]></search>
 			<add><![CDATA[
-              <td><input type="text" name="payment_address_2" value="<?php echo $payment_address_2; ?>" /></td>
-            </tr>
+			  <td><input type="text" name="payment_address_2" value="<?php echo $payment_address_2; ?>" /></td>
+			</tr>
 			]]></add>
 		</operation>
 
 		<operation info="Remove city field">
 			<search position="replace" offset="5"><![CDATA[
-              <td><input type="text" name="shipping_address_2" value="<?php echo $shipping_address_2; ?>" /></td>
+			  <td><input type="text" name="shipping_address_2" value="<?php echo $shipping_address_2; ?>" /></td>
 			]]></search>
 			<add><![CDATA[
-              <td><input type="text" name="shipping_address_2" value="<?php echo $shipping_address_2; ?>" /></td>
-            </tr>
-            </tr>
+			  <td><input type="text" name="shipping_address_2" value="<?php echo $shipping_address_2; ?>" /></td>
+			</tr>
+			</tr>
 			]]></add>
 		</operation>
 
 		<operation info="Change city text field to select and place it after zone">
 			<search position="after" offset="2"><![CDATA[
-                <span class="error"><?php echo $error_payment_zone; ?></span>
+				<span class="error"><?php echo $error_payment_zone; ?></span>
 			]]></search>
 			<add><![CDATA[
-            <tr>
-              <td><span class="required">*</span> <?php echo $entry_city; ?></td>
-              <td><select name="payment_city"></select>
-                <?php if ($error_payment_city) { ?>
-                <span class="error"><?php echo $error_payment_city; ?></span>
-                <?php } ?></td>
-            </tr>
+			<tr>
+			  <td><span class="required">*</span> <?php echo $entry_city; ?></td>
+			  <td><select name="payment_city"></select>
+				<?php if ($error_payment_city) { ?>
+				<span class="error"><?php echo $error_payment_city; ?></span>
+				<?php } ?></td>
+			</tr>
 			]]></add>
 		</operation>
 
 		<operation info="Change city text field to select and place it after zone">
 			<search position="after" offset="2"><![CDATA[
-                <span class="error"><?php echo $error_shipping_zone; ?></span>
+				<span class="error"><?php echo $error_shipping_zone; ?></span>
 			]]></search>
 			<add><![CDATA[
-            <tr>
-              <td><span class="required">*</span> <?php echo $entry_city; ?></td>
-              <td><select name="shipping_city"></select>
-                <?php if ($error_shipping_city) { ?>
-                <span class="error"><?php echo $error_shipping_city; ?></span>
-                <?php } ?></td>
-            </tr>
+			<tr>
+			  <td><span class="required">*</span> <?php echo $entry_city; ?></td>
+			  <td><select name="shipping_city"></select>
+				<?php if ($error_shipping_city) { ?>
+				<span class="error"><?php echo $error_shipping_city; ?></span>
+				<?php } ?></td>
+			</tr>
 			]]></add>
 		</operation>
 
@@ -426,13 +426,13 @@ $('select[name=\'payment_zone_id\']').bind('change', function() {
 
 			if (json != '' && json['city'] != '') {
 				for (i = 0; i < json['city'].length; i++) {
-        			html += '<option value="' + json['city'][i]['name'] + '"';
+					html += '<option value="' + json['city'][i]['name'] + '"';
 
 					if (json['city'][i]['name'] == payment_city) {
-	      				html += ' selected="selected"';
-	    			}
+		  				html += ' selected="selected"';
+					}
 
-	    			html += '>' + json['city'][i]['name'] + '</option>';
+					html += '>' + json['city'][i]['name'] + '</option>';
 				}
 			} else {
 				html += '<option value="0" selected="selected"><?php echo $text_none; ?></option>';
@@ -501,13 +501,13 @@ $('select[name=\'shipping_zone_id\']').bind('change', function() {
 
 			if (json != '' && json['city'] != '') {
 				for (i = 0; i < json['city'].length; i++) {
-        			html += '<option value="' + json['city'][i]['name'] + '"';
+					html += '<option value="' + json['city'][i]['name'] + '"';
 
 					if (json['city'][i]['name'] == shipping_city) {
-	      				html += ' selected="selected"';
-	    			}
+		  				html += ' selected="selected"';
+					}
 
-	    			html += '>' + json['city'][i]['name'] + '</option>';
+					html += '>' + json['city'][i]['name'] + '</option>';
 				}
 			} else {
 				html += '<option value="0" selected="selected"><?php echo $text_none; ?></option>';
