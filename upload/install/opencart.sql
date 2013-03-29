@@ -2114,7 +2114,7 @@ CREATE TABLE `oc_language` (
 --
 
 INSERT INTO `oc_language` (`language_id`, `name`, `code`, `locale`, `image`, `directory`, `filename`, `sort_order`, `status`) VALUES
-(1, 'English', 'en', 'en_US.UTF-8,en_US,en-gb,english', 'gb.png', 'english', 'english', 1, 1);
+(1, 'Indonesia', 'id', 'id_ID.UTF-8,id_ID,id-id,indonesia', 'id.png', 'indonesia', 'indonesia', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -3592,7 +3592,7 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `group`, `key`, `value`, `se
 (119, 0, 'config', 'config_layout_id', '4', 0),
 (120, 0, 'config', 'config_country_id', '100', 0),
 (121, 0, 'config', 'config_zone_id', '1513', 0),
-(122, 0, 'config', 'config_language', 'en', 0),
+(122, 0, 'config', 'config_language', 'id', 0),
 (123, 0, 'config', 'config_admin_language', 'en', 0),
 (124, 0, 'config', 'config_order_edit', '100', 0),
 (125, 0, 'config', 'config_voucher_min', '1', 0),
