@@ -11,7 +11,7 @@ $_['text_column_left']    = 'Column Left';
 $_['text_column_right']   = 'Column Right';
 
 // Entry
-$_['entry_ym']            = 'Username:<br/><span class="help">Format:<br />{title or name},{YM account},{icon}<br />One account per line</span>';
+$_['entry_ym']            = 'Username:<br /><span class="help">Format:<br />{title or name},{YM account},{icon}<br />One account per line</span>';
 $_['entry_layout']        = 'Layout:';
 $_['entry_position']      = 'Position:';
 $_['entry_status']        = 'Status:';
