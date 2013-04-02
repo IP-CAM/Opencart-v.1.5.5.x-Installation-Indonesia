@@ -27,7 +27,6 @@ class ControllerModuleYm extends Controller {
 		$this->data['text_column_right'] = $this->language->get('text_column_right');
 
 		$this->data['entry_ym'] = $this->language->get('entry_ym');
-		$this->data['entry_icon'] = $this->language->get('entry_icon');
 		$this->data['entry_layout'] = $this->language->get('entry_layout');
 		$this->data['entry_position'] = $this->language->get('entry_position');
 		$this->data['entry_status'] = $this->language->get('entry_status');
