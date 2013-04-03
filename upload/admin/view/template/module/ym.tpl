@@ -17,7 +17,7 @@
     <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form">
       <table class="form">
         <tr>
-          <td><span class="required">*</span> <?php echo $entry_ym; ?></td>
+          <td style="width: 300px;"><span class="required">*</span> <?php echo $entry_ym; ?></td>
           <td><textarea name="ym_username" cols="40" rows="5"><?php echo $ym_username; ?></textarea>
             <?php if ($error_username) { ?>
             <span class="error"><?php echo $error_username; ?></span>
