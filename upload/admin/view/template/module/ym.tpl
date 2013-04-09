@@ -21,6 +21,9 @@
           <td><textarea name="ym_username" cols="60" rows="5"><?php echo $ym_username; ?></textarea>
             <?php if ($error_username) { ?>
             <span class="error"><?php echo $error_username; ?></span>
+            <?php } ?>
+            <?php if ($error_format) { ?>
+            <span class="error"><?php echo $error_format; ?></span>
             <?php } ?></td>
         </tr>
       </table>

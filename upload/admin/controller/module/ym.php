@@ -49,6 +49,12 @@ class ControllerModuleYm extends Controller {
 			$this->data['error_username'] = '';
 		}
 
+		if (isset($this->error['error_format'])) {
+			$this->data['error_format'] = $this->error['error_format'];
+		} else {
+			$this->data['error_format'] = '';
+		}
+
 		$this->data['breadcrumbs'] = array();
 
 		$this->data['breadcrumbs'][] = array(
@@ -74,7 +80,7 @@ class ControllerModuleYm extends Controller {
 		$this->data['cancel'] = $this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL');
 
 		if (isset($this->request->post['ym_username'])) {
-			$this->data['ym_username'] = nl2br($this->request->post['ym_username']);
+			$this->data['ym_username'] = $this->request->post['ym_username'];
 		} else {
 			$this->data['ym_username'] = $this->config->get('ym_username');
 		}
@@ -107,6 +113,20 @@ class ControllerModuleYm extends Controller {
 
 		if (!$this->request->post['ym_username']) {
 			$this->error['error_username'] = $this->language->get('error_username');
+		}
+
+		if (isset($this->request->post['ym_username']) && !empty($this->request->post['ym_username'])) {
+			$lines = explode('<br />', nl2br($this->request->post['ym_username']));
+			
+			foreach ($lines as $line) {
+				$items = explode(',', $line);
+				
+				if (count($items) != 3) {
+					$this->error['error_format'] = $this->language->get('error_format');
+
+					break;
+				}
+			}
 		}
 
 		if (!$this->error) {
