@@ -1,0 +1,21 @@
+.ym {
+	text-align: center;
+}
+
+.ym ul {
+	list-style: none;
+	padding: 0;
+}
+
+.ym ul li+li {
+	border-top: 1px solid #CCC;
+	margin-top: 10px;
+	padding-top: 10px;
+}
+
+.ym-title {
+	display: block;
+	font-size: 12px;
+	font-weight: bold;
+	margin-bottom: 3px;
+}
