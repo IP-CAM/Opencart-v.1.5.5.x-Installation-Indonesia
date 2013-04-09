@@ -11,16 +11,18 @@ class ControllerModuleYm extends Controller {
 			$this->document->addStyle('catalog/view/theme/default/stylesheet/ym.css');
 		}
 
+		$this->data['accounts'] = array();
+
 		$lines = explode('<br />', nl2br($this->config->get('ym_username')));
-		$icon = $this->config->get('ym_icon');
-		$this->data['content'] = '';
 
 		foreach ($lines as $line) {
-			$line = explode(',', $line);
-			$title = trim($line[0]);
-			$username = trim($line[1]);
-			$icon = trim($line[2]);
-			$this->data['content'] .= '<li><span class="ym-title">' . $title . '</span><a href="ymsgr:sendIM?' . trim($username) . '"><img src="http://opi.yahoo.com/online?u=' . trim($username) . '&m=g&t=' . $icon . '" /></a></li>';
+			$items = explode(',', $line);
+
+			$this->data['accounts'][] = array(
+				'title'		=> trim($items[0]),
+				'username'	=> trim($items[1]),
+				'icon'		=> trim($items[2])
+			);
 		}
 
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/module/ym.tpl')) {
