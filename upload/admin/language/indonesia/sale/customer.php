@@ -8,8 +8,8 @@ $_['text_default']          = 'Default';
 $_['text_approved']         = 'Anda telah menyetujui account %s!';
 $_['text_wait']             = 'Silahkan Tunggu!';
 $_['text_balance']          = 'Saldo:';
-$_['text_add_blacklist']    = 'Tambah Blacklist';
-$_['text_remove_blacklist'] = 'Hapus Blacklist';
+$_['text_add_ban_ip']       = 'Tambah Ban IP';
+$_['text_remove_ban_ip']    = 'Hapus Ban IP';
 
 // Column
 $_['column_name']           = 'Nama Pelanggan';
@@ -19,6 +19,7 @@ $_['column_status']         = 'Status';
 $_['column_login']          = 'Login ke Toko';
 $_['column_approved']       = 'Disetujui';
 $_['column_date_added']     = 'Tanggal Ditambahkan';
+$_['column_comment']        = 'Komentar';
 $_['column_description']    = 'Deskripsi';
 $_['column_amount']         = 'Jumlah';
 $_['column_points']         = 'Poin';
@@ -47,9 +48,10 @@ $_['entry_postcode']        = 'Kode Pos:';
 $_['entry_country']         = 'Negara:';
 $_['entry_zone']            = 'Daerah / Negara:';
 $_['entry_default']         = 'Alamat Default:';
+$_['entry_comment']         = 'Komentar:';
+$_['entry_description']     = 'Deskripsi:';
 $_['entry_amount']          = 'Jumlah:';
 $_['entry_points']          = 'Poin:<br /><span class="help">Gunakan minus untuk menghapus poin</span>';
-$_['entry_description']     = 'Deskripsi:';
 
 // Error
 $_['error_warning']         = 'Peringatan: Silahkan cek form dengan seksama untuk error!';

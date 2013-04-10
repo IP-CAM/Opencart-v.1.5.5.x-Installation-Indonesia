@@ -62,7 +62,7 @@ $_['entry_image_related']          = 'Ukuran Gambar Produk Terkait:';
 $_['entry_image_compare']          = 'Ukuran Gambar Penawaran:';
 $_['entry_image_wishlist']         = 'Ukuran Gambar Daftar yang Diinginkan:';
 $_['entry_image_cart']             = 'Ukuran Gambar Cart:';
-$_['entry_use_ssl']                = 'Gunakan SSL:<br /><span class="help">Untuk menggunakan SSL cek dengan host Anda jika sertifikat SSL telah terinstal.</span>';
+$_['entry_secure']                 = 'Gunakan SSL:<br /><span class="help">Untuk menggunakan SSL cek dengan host Anda jika sertifikat SSL telah terinstal.</span>';
 
 // Error
 $_['error_warning']                = 'Peringatan: Silahkan periksa form dengan seksama untuk error!';

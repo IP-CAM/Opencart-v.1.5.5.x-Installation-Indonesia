@@ -11,6 +11,7 @@ $_['entry_restore']    = 'Restore Backup:';
 $_['entry_backup']     = 'Backup:';
 
 // Error
-$_['error_permission'] = 'Perhatian: Anda tidak memiliki izin untuk memodifikasi backup!';
-$_['error_empty']      = 'Perhatian: File yang anda unggah kosong!';
+$_['error_permission'] = 'Peringatan: Anda tidak memiliki izin untuk memodifikasi backup!';
+$_['error_backup']     = 'Peringatan: Anda harus memilih setidaknya satu tabel untuk backup!';
+$_['error_empty']      = 'Peringatan: File yang anda unggah kosong!';
 ?>

@@ -28,14 +28,14 @@ $_['column_action']       = 'Aksi';
 // Entry
 $_['entry_name']         = 'Nama Pilihan:';
 $_['entry_type']         = 'Tipe:';
-$_['entry_value']        = 'Nama Value Pilihan:';
+$_['entry_option_value'] = 'Nama Value Pilihan:';
 $_['entry_image']        = 'Gambar:';
 $_['entry_sort_order']   = 'Sort Order:';
 
 // Error
 $_['error_permission']   = 'Peringatan: Anda tidak memiliki izin untuk memodifikasi pilihan!';
 $_['error_name']         = 'Pilihan harus diantara 1 dan 128 karakter!';
-$_['error_type']         = 'Peringata: Value Pilihan harus diisi!';
+$_['error_type']         = 'Peringatan: Value Pilihan harus diisi!';
 $_['error_option_value'] = 'Nama Value Pilihan harus diantara 1 dan 128 karakter!';
-$_['error_product']      = 'Peringatan: Pilihan ini tidak bisa dihapus sedang digunakan untuk produk %s!';
+$_['error_product']      = 'Peringatan: Pilihan ini tidak bisa dihapus karena sedang digunakan pada %s produk!';
 ?>

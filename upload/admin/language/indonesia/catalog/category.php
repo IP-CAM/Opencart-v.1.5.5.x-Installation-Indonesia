@@ -20,6 +20,7 @@ $_['entry_meta_keyword'] 	 = 'Meta Tag Keywords:';
 $_['entry_meta_description'] = 'Meta Tag Description:';
 $_['entry_description']      = 'Deskripsi:';
 $_['entry_parent']           = 'Induk Kategori:';
+$_['entry_filter']           = 'Filters:<br /><span class="help">(Autocomplete)</span>';
 $_['entry_store']            = 'Stores:';
 $_['entry_keyword']          = 'SEO Keyword:<br /><span class="help">Jangan gunakan spasi, ganti spasi dengan - dan pastikan kata kunci adalah unik secara global.</span>';
 $_['entry_image']            = 'Gambar:';
