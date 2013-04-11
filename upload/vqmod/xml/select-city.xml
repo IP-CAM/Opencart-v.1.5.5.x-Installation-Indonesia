@@ -28,6 +28,17 @@
 		</operation>
 	</file>
 
+	<file name="admin/language/indonesia/common/header.php">
+		<operation info="Insert City menu in admin">
+			<search position="before"><![CDATA[
+?>
+			]]></search>
+			<add><![CDATA[
+$_['text_city']						= 'Kota';
+			]]></add>
+		</operation>
+	</file>
+
 	<file name="admin/language/english/common/header.php">
 		<operation info="Insert City menu in admin">
 			<search position="before"><![CDATA[
@@ -1088,6 +1099,17 @@ $('#shipping-address select[name=\'zone_id\']').trigger('change');
 	<!-- Change city field in checkout form start -->
 
 	<!-- Change city error messages start -->
+	<file path="catalog/language/indonesia/" name="account/address.php,account/register.php,affiliate/edit.php,affiliate/register.php,checkout/checkout.php">
+		<operation info="Change city error message">
+			<search position="replace"><![CDATA[
+Kota harus terdiri dari 2 s/d 128 karakter!
+			]]></search>
+			<add><![CDATA[
+Silakan pilih kota!
+			]]></add>
+		</operation>
+	</file>
+
 	<file path="catalog/language/english/" name="account/address.php,account/register.php,affiliate/edit.php,affiliate/register.php,checkout/checkout.php">
 		<operation info="Change city error message">
 			<search position="replace"><![CDATA[
