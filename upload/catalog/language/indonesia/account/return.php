@@ -19,7 +19,7 @@ $_['text_customer']      = 'Pelanggan:';
 $_['text_comment']       = 'Komentar Retur';
 $_['text_history']       = 'Riwayat Retur';
 $_['text_empty']         = 'Anda belum pernah melakukan retur produk!';
-$_['text_error']         = 'Retur yang Anda minta tidak dapat ditemukan!';
+$_['text_agree']         = 'Saya telah membaca dan setuju dengan <a class="colorbox" href="%s" alt="%s"><b>%s</b></a>';
 
 // Column
 $_['column_product']     = 'Nama Produk';
@@ -49,6 +49,7 @@ $_['entry_fault_detail'] = 'Kerusakan atau detail lainnya:';
 $_['entry_captcha']      = 'Masukkan kode verifikasi berikut:';
 
 // Error
+$_['text_error']         = 'Retur yang Anda minta tidak dapat ditemukan!';
 $_['error_order_id']     = 'No. Pesan diperlukan!';
 $_['error_firstname']    = 'Nama Depan harus terdiri dari 1 s/d 32 karakter!';
 $_['error_lastname']     = 'Nama Belakang harus terdiri dari 1 s/d 32 karakter!';
@@ -58,4 +59,5 @@ $_['error_product']      = 'Nama Produk harus lebih besar dari 3 dan kurang dari
 $_['error_model']        = 'Model Produk harus lebih besar dari 3 dan kurang dari 64 karakter!';
 $_['error_reason']       = 'Anda harus memilih alasan retur produk!';
 $_['error_captcha']      = 'Kode verifikasi tidak sesuai gambar!';
+$_['error_agree']        = 'Peringatan: Anda harus setuju dengan %s!';
 ?>

@@ -46,8 +46,8 @@ $_['entry_firstname']                = 'Nama Depan:';
 $_['entry_lastname']                 = 'Nama Belakang:';
 $_['entry_telephone']                = 'Telepon:';
 $_['entry_fax']                      = 'Fax:';
-$_['entry_account']                  = 'Akun:';
 $_['entry_company']                  = 'Perusahaan:';
+$_['entry_customer_group']           = 'Tipe Bisnis:';
 $_['entry_company_id']               = 'ID Perusahaan:';
 $_['entry_tax_id']                   = 'NPWP:';
 $_['entry_address_1']                = 'Alamat 1:';
@@ -60,7 +60,7 @@ $_['entry_newsletter']               = 'Saya ingin berlangganan %s berita.';
 $_['entry_shipping'] 	             = 'Alamat pengiriman dan tagihan saya adalah sama.';
 
 // Error
-$_['error_Peringatan']                  = 'Terjadi kesalahan saat memproses pesanan Anda! Jika masalah berlanjut, silahkan coba pilih metode pembayaran yang berbeda atau silahkan <a href="%s">hubungi kami</a>.';
+$_['error_warning']                  = 'Terjadi kesalahan saat memproses pesanan Anda! Jika masalah berlanjut, silahkan coba pilih metode pembayaran yang berbeda atau silahkan <a href="%s">hubungi kami</a>.';
 $_['error_login']                    = 'Peringatan: Alamat Email dan/atau Password tidak ditemukan.';
 $_['error_approved']                 = 'Peringatan: Account Anda membutuhkan persetujuan sebelum Anda dapat login.'; 
 $_['error_exists']                   = 'Peringatan: Alamat Email telah terdaftar!';

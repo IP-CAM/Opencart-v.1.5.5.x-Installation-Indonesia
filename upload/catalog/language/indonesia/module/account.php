@@ -10,6 +10,7 @@ $_['text_forgotten']   = 'Lupa Password';
 $_['text_account']     = 'Akun Saya';
 $_['text_edit']        = 'Ubah Akun';
 $_['text_password']    = 'Password';
+$_['text_address']     = 'Buku Alamat';
 $_['text_wishlist']    = 'Daftar Belanja';
 $_['text_order']       = 'Riwayat Pesanan';
 $_['text_download']    = 'Download';
